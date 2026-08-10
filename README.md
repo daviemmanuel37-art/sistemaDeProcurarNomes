@@ -1,32 +1,33 @@
-# React + TypeScript + Vite
+# 🔍 Consulta de Frequência de Nomes no Brasil (IBGE)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicação web desenvolvida como desafio técnico para consultar a frequência de nascimento de nomes por década no Brasil, consumindo a API pública do IBGE.
 
-Currently, two official plugins are available:
+🚀 **Link da Aplicação no Ar:** [COLE_O_LINK_DA_SUA_VERCEL_AQUI]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** (com TypeScript)
+- **Vite** (Build Tool)
+- **CSS3** (Estilização responsiva com Cards)
+- **API do IBGE** (Serviço de Dados de Nomes)
+- **Vercel** (Hospedagem e Deploy Contínuo)
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 📌 Funcionalidades
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+- Campo de busca funcional com suporte ao botão **"Buscar"** e acionamento pela tecla **`Enter`**.
+- Validação de entrada para evitar consultas com campos vazios.
+- Estado de **Carregando** com aviso visual em tempo real.
+- Estado de **Erro** amigável para nomes não encontrados ou falhas de requisição.
+- Exibição de **Sucesso** com resultados organizados e formatados em cards por década.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+
+## 🖥️ Como Rodar o Projeto Localmente
+
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/daviemmanuel37-art/desafio-ibge-nomes.git](https://github.com/daviemmanuel37-art/desafio-ibge-nomes.git)
