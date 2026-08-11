@@ -1,166 +1,152 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f4f6f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-.container {
-  width: 100%;
-  max-width: 800px;
-}
-
-.card-busca {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-h1 {
-  font-size: 1.8rem;
-  color: #1e293b;
-  margin-bottom: 8px;
-}
-
-.subtitulo {
-  color: #64748b;
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-}
-
-.busca-box {
-  display: flex;
-  gap: 10px;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.input-container {
-  position: relative;
-  flex: 1;
-}
-
-input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-input:focus {
-  border-color: #2563eb;
-}
-
-/* Menu de Sugestões / Autocomplete */
-.lista-sugestoes {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  margin-top: 4px;
-  max-height: 200px;
-  overflow-y: auto;
-  list-style: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  text-align: left;
-}
-
-.lista-sugestoes li {
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background 0.2s;
-  color: #334155;
-  font-weight: 500;
-}
-
-.lista-sugestoes li:hover {
-  background: #f1f5f9;
-  color: #2563eb;
-}
-
-button {
-  padding: 12px 24px;
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: #1d4ed8;
-}
-
-.mensagem-erro {
-  color: #ef4444;
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-.mensagem-carregando {
-  color: #2563eb;
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-.resultado-container {
-  margin-top: 30px;
-}
-
-.resultado-container h2 {
-  font-size: 1.4rem;
-  color: #1e293b;
-  margin-bottom: 20px;
-}
-
-.resultado-container h2 span {
-  color: #2563eb;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-}
-
-.card-decada {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  padding: 16px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.decada-titulo {
-  font-size: 0.85rem;
-  color: #64748b;
-  font-weight: 600;
-}
-
-.decada-valor {
-  font-size: 1.1rem;
-  color: #0f172a;
-  font-weight: 700;
-}
+/* ===== RESET BÁSICO ===== */
+/* Todo navegador tem margens/paddings "padrão" diferentes.
+   Isso zera tudo pra você ter controle total do espaçamento. */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* faz o padding não "estourar" o tamanho do elemento */
+  }
+  
+  body {
+    font-family: Arial, sans-serif; /* fonte usada em todo o site */
+    background-color: #f0f2f5; /* cor de fundo da página (cinza clarinho) */
+    min-height: 100vh; /* ocupa no mínimo 100% da altura da tela (viewport height) */
+    display: flex;
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+  }
+  
+  /* ===== CONTAINER GERAL ===== */
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* ===== CARD PRINCIPAL (o "cartão branco" onde tudo fica) ===== */
+  .card-busca {
+    background: white;
+    border-radius: 16px; /* cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* sombra suave */
+    padding: 32px;
+    width: 100%;
+    max-width: 480px; /* não deixa o card ficar gigante em telas largas */
+    text-align: center;
+  }
+  
+  .card-busca h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+  
+  .subtitulo {
+    color: #666;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  
+  /* ===== ÁREA DE BUSCA (input + botão) ===== */
+  .busca-box {
+    display: flex; /* input e botão lado a lado */
+    gap: 8px; /* espaço entre os dois */
+    margin-bottom: 16px;
+  }
+  
+  /* input-container precisa de position: relative
+     porque a lista de sugestões vai ser "position: absolute"
+     e vai se posicionar em relação a ESTE elemento pai */
+  .input-container {
+    position: relative;
+    flex: 1; /* ocupa todo o espaço que sobrar, empurrando o botão pra direita */
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none; /* remove aquele contorno azul feio do navegador */
+    transition: border-color 0.2s; /* deixa a mudança de cor suave */
+  }
+  
+  .input-container input:focus {
+    border-color: #4f46e5; /* muda a cor da borda quando o usuário clica/foca no input */
+  }
+  
+  .busca-box button {
+    padding: 12px 20px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer; /* muda o cursor pra "mãozinha" ao passar por cima */
+    transition: background-color 0.2s;
+  }
+  
+  .busca-box button:hover {
+    background-color: #4338ca; /* fica mais escuro quando passa o mouse */
+  }
+  
+  /* ===== LISTA DE SUGESTÕES (autocomplete) ===== */
+  .lista-sugestoes {
+    position: absolute; /* sai do fluxo normal e "flutua" sobre o resto */
+    top: 100%; /* fica logo abaixo do input (input-container é o "relative" pai) */
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-top: 4px;
+    max-height: 220px;
+    overflow-y: auto; /* se a lista for grande, aparece scroll */
+    list-style: none; /* remove as bolinhas de lista padrão do <ul> */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* garante que fique por CIMA dos outros elementos */
+    text-align: left;
+  }
+  
+  .lista-sugestoes li {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .lista-sugestoes li:hover {
+    background-color: #f3f4f6; /* destaque ao passar o mouse */
+  }
+  
+  /* ===== RESULTADO (lista de décadas) ===== */
+  .resultado-lista {
+    list-style: none;
+    text-align: left;
+    margin-top: 16px;
+  }
+  
+  .resultado-lista li {
+    display: flex;
+    justify-content: space-between; /* período de um lado, número do outro */
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; /* linha separando cada item */
+    font-size: 15px;
+  }
+  
+  .resultado-lista li:last-child {
+    border-bottom: none; /* remove a linha do último item */
+  }
+  
+  .resultado-lista strong {
+    color: #4f46e5;
+  }
+  
+  /* ===== MENSAGEM DE ERRO ===== */
+  .erro {
+    color: #dc2626;
+    margin-top: 12px;
+    font-size: 14px;
+  }
