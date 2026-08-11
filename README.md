@@ -2,7 +2,7 @@
 
 Aplicação web desenvolvida como desafio técnico para consultar a frequência de nascimento de nomes por década no Brasil, consumindo a API pública do IBGE.
 
-🚀 **Link da Aplicação no Ar:** [COLE_O_LINK_DA_SUA_VERCEL_AQUI]
+🚀 **Link da Aplicação no Ar:** (https://desafio-ibge-nomes.vercel.app/)
 
 ---
 
